@@ -1,4 +1,4 @@
-# Omeka-Mirror-Exhibit-Page
+# MirrorExhibitPage
 An Omeka plugin to mirror exhibit pages using the exhibit page layout.
 
 
