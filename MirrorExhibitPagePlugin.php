@@ -7,7 +7,7 @@
  */
 
 //extends Omeka_Plugin_AbstractPlugin because it is a plugin
-class MirrorExhibitLayoutPlugin extends Omeka_Plugin_AbstractPlugin
+class MirrorExhibitPagePlugin extends Omeka_Plugin_AbstractPlugin
 {
   // a corresponding key in $_hooks and $_filters will be interpreted as the name of the callback method.
   //Exhibit Builder provides a filter named exhibit_layouts.
