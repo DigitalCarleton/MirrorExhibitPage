@@ -8,7 +8,7 @@
     $pagesTable = $db->getTable("ExhibitPage");
     $pages = $pagesTable->fetchObjects("SELECT * FROM omeka_exhibit_pages");
 
-    $html = "<div id='exhibit-page-display' class='selected-item-list'>";
+    echo "<div id='exhibit-page-display' class='selected-item-list'>";
 
     foreach ($pages as $index => $exhibitPage) {
         // Get page data for menu
@@ -25,7 +25,7 @@
         }
 
         // Create menu element with page data
-        $html .= "
+        echo "
         <div class='attachment' data-attachment-index='{$index}' onclick=\"document.getElementsByName('{$formStem}[text]')[0].value = {$pageID};\">
             <div class='attachment-body'>
                 <div class='attachment-background' style=\"background: url('{$imageURL}') center / cover\"></div>
@@ -36,7 +36,7 @@
     }
 
     // Styles for page selection menu
-    $html .= "</div>
+    echo "</div>
     <style>
     #exhibit-page-display {
         overflow-y: scroll;
@@ -45,8 +45,6 @@
     }
     </style>
     ";
-
-    echo $html;
     ?>
 </div>
 
