@@ -15,9 +15,12 @@
         $pageTitle = $exhibitPage->title;
         $pageID = $exhibitPage->id;
         $imageURL = "";
-        if (count($exhibitPage->getAllAttachments()) > 0) {
-            if ($exhibitPage->getAllAttachments()[0]->getItem()->getFiles()[0]->hasThumbnail()) {
-                $imageURL = $exhibitPage->getAllAttachments()[0]->getItem()->getFiles()[0]->getWebPath();
+
+        $pageAttachments = $exhibitPage->getAllAttachments();
+        if (count($pageAttachments) > 0) {
+            $fileAttachments = $pageAttachments[0]->getItem()->getFiles();
+            if ($fileAttachments[0]->hasThumbnail()) {
+                $imageURL = $fileAttachments[0]->getWebPath();
             }
         }
 
