@@ -54,7 +54,8 @@
 
 <?php // This section creates the Mirror Page ID text box, which is how the page ID gets saved to the database.
     $blocksTable = $db->getTable('ExhibitPageBlock');
-    $currentPageID = (int)$block->getPage(0)['id'];
+    $page = $block->getPage(0);
+    $currentPageID = (int)$page['id'];
     if (count($blocksTable->fetchObjects("SELECT text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}")) > 0) {
         $mirroredPageID = (int)$blocksTable->fetchObjects("SELECT text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}")[0]['text'];
     } else {
