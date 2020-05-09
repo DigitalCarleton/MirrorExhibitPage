@@ -57,7 +57,8 @@
     $page = $block->getPage(0);
     $currentPageID = (int)$page['id'];
     if (count($blocksTable->fetchObjects("SELECT text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}")) > 0) {
-        $mirroredPageID = (int)$blocksTable->fetchObjects("SELECT text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}")[0]['text'];
+        $blocksData = $blocksTable->fetchObjects("SELECT text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}");
+        $mirroredPageID = (int)$blocksData[0]['text'];
     } else {
         $mirroredPageID = "";
     }

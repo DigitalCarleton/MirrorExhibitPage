@@ -3,8 +3,10 @@
 $db = get_db();
 $table = $db->getTable('ExhibitPage');
 $blocksTable = $db->getTable('ExhibitPageBlock');
-$currentPageID = (int)$block->getPage(0)['id'];
-$mirroredPageID = (int)$blocksTable->fetchObjects("SELECT text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}")[0]['text'];
+$currentPage = $block->getPage(0);
+$currentPageID = (int)$currentPage['id'];
+$blocksData = $blocksTable->fetchObjects("SELECT text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}");
+$mirroredPageID = (int)$blocksData[0]['text'];
 
 
 # GET PAGE OBJECT FOR exhibit_builder_render_exhibit_page
