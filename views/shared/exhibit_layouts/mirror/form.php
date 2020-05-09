@@ -19,7 +19,7 @@
         $pageAttachments = $exhibitPage->getAllAttachments();
         if (count($pageAttachments) > 0) {
             $fileAttachments = $pageAttachments[0]->getItem()->getFiles();
-            if ($fileAttachments[0]->hasThumbnail()) {
+            if (count($fileAttachments) > 0 && $fileAttachments[0]->hasThumbnail()) {
                 $imageURL = $fileAttachments[0]->getWebPath();
             }
         }
