@@ -1,5 +1,5 @@
 <?php // This code chunk creates the mirror exhibit page selection menu ?>
-<div class="selected-items">
+<!-- <div class="selected-items">
     <h4><?php echo __('Select Page to Mirror'); ?></h4>
 
     <?php
@@ -46,7 +46,12 @@
     </style>
     ";
     ?>
-</div>
+</div> -->
+
+<?php // Temporary help text explaining how to get ID from URL ?>
+    <p>Find the ID of the exhibit page you want to mirror by navigating to the exhibit page on the admin side, and taking the number at the end of the URL.</p>
+    <p>For example: https://www.myomekasite.com/admin/exhibits/edit-page/6 the ID for this page would be 6.</p>
+    <p>Insert this ID in the textbox below to mirror the page.</p>
 
 
 
