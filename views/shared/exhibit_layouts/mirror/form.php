@@ -52,6 +52,7 @@ function submenuSelector() {
 
 <?php
 $pagesTable = $db->getTable("ExhibitPage");
+$allPages = $pagesTable->fetchObjects("SELECT * FROM omeka_exhibit_pages");
 
 ########################################################## Create sub menu of pages for each exhibit
 foreach ($exhibits as $index => $exhibit) {
@@ -59,7 +60,12 @@ foreach ($exhibits as $index => $exhibit) {
     $id = $exhibit['id'];
     echo "<div class='pages-sub-menu' id='{$slug}' hidden>";
 
-    $pages = $pagesTable->fetchObjects("SELECT * FROM omeka_exhibit_pages WHERE exhibit_id = {$id}");
+    $pages = array();
+    foreach($allPages as $index => $page) {
+        if ($page['exhibit_id'] == $id) {
+            $pages[] = $page;
+        }
+    }
 
     foreach ($pages as $index => $exhibitPage) {
         // Get page data for menu
