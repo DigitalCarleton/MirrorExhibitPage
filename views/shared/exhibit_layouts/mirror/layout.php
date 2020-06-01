@@ -14,4 +14,6 @@ $mirroredContent = $table->fetchObject("SELECT * FROM omeka_exhibit_pages WHERE 
 
 
 # RENDER CONTENT FOR MIRRORED PAGE
+echo "</div>"; # This end tag escapes the automatic mirror-layout page block that the content gets put into, so pages can be mirrored without nested blocks
 echo exhibit_builder_render_exhibit_page($exhibitPage = $mirroredContent);
+echo "<div>";
