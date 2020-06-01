@@ -57,13 +57,13 @@ foreach ($exhibits as $index => $exhibit) {
     foreach($allPages as $index => $page) {
         if ($page['exhibit_id'] == $id) {
             // Get page data for menu
-            $pageTitle = $exhibitPage->title;
-            $pageID = $exhibitPage->id;
+            $pageTitle = $page->title;
+            $pageID = $page->id;
             $imageURL = "";
             
             // THIS SECTION FINDS BACKGROUND IMAGES FOR ALL MENU ELEMENTS -- VERY SLOW
             // try {
-            //     $pageAttachments = $exhibitPage->getAllAttachments();
+            //     $pageAttachments = $page->getAllAttachments();
             //     if (count($pageAttachments) > 0) {
             //         $item = $pageAttachments[0]->getItem();
             //         if ($item) {
