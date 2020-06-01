@@ -61,7 +61,7 @@ foreach ($exhibits as $index => $exhibit) {
             $pageID = $page->id;
             $imageURL = "";
             
-            // THIS SECTION FINDS BACKGROUND IMAGES FOR ALL MENU ELEMENTS -- VERY SLOW
+            // THIS SECTION FINDS BACKGROUND IMAGES FOR ALL MENU ELEMENTS -- VERY SLOW, CAN BE COMMENTED OUT
             try {
                 $pageAttachments = $page->getAllAttachments();
                 if (count($pageAttachments) > 0) {
