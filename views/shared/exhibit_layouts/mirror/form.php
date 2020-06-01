@@ -71,22 +71,23 @@ foreach ($exhibits as $index => $exhibit) {
         // Get page data for menu
         $pageTitle = $exhibitPage->title;
         $pageID = $exhibitPage->id;
+        $imageURL = ""
         
-        try {
-            $imageURL = "";
-            $pageAttachments = $exhibitPage->getAllAttachments();
-            if (count($pageAttachments) > 0) {
-                $item = $pageAttachments[0]->getItem();
-                if ($item) {
-                    $fileAttachments = $item->getFiles();
-                    if (count($fileAttachments) > 0 && $fileAttachments[0]->hasThumbnail()) {
-                        $imageURL = $fileAttachments[0]->getWebPath();
-                    }
-                }
-            }
-        } catch (Exception $e) {
-            $imageURL = "";
-        }
+        // try {
+        //     $imageURL = "";
+        //     $pageAttachments = $exhibitPage->getAllAttachments();
+        //     if (count($pageAttachments) > 0) {
+        //         $item = $pageAttachments[0]->getItem();
+        //         if ($item) {
+        //             $fileAttachments = $item->getFiles();
+        //             if (count($fileAttachments) > 0 && $fileAttachments[0]->hasThumbnail()) {
+        //                 $imageURL = $fileAttachments[0]->getWebPath();
+        //             }
+        //         }
+        //     }
+        // } catch (Exception $e) {
+        //     $imageURL = "";
+        // }
 
         // Create menu element with page data
         echo "
