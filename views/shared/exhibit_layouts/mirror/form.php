@@ -1,6 +1,7 @@
 <?php // This code chunk creates the mirror exhibit page selection menu
 $formStem = $block->getFormStem();
 $db = get_db();
+set_time_limit(0);
 ?>
 
 
