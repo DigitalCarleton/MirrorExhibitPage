@@ -1,7 +1,7 @@
 <?php // This code chunk creates the mirror exhibit page selection menu
 $formStem = $block->getFormStem();
 $db = get_db();
-set_time_limit(0);
+// set_time_limit(0);
 ?>
 
 
@@ -71,14 +71,18 @@ foreach ($exhibits as $index => $exhibit) {
         // Get page data for menu
         $pageTitle = $exhibitPage->title;
         $pageID = $exhibitPage->id;
-        $imageURL = "";
-
-        $pageAttachments = $exhibitPage->getAllAttachments();
-        if (count($pageAttachments) > 0) {
-            $fileAttachments = $pageAttachments[0]->getItem()->getFiles();
-            if (count($fileAttachments) > 0 && $fileAttachments[0]->hasThumbnail()) {
-                $imageURL = $fileAttachments[0]->getWebPath();
+        
+        try {
+            $imageURL = "";
+            $pageAttachments = $exhibitPage->getAllAttachments();
+            if (count($pageAttachments) > 0) {
+                $fileAttachments = $pageAttachments[0]->getItem()->getFiles();
+                if (count($fileAttachments) > 0 && $fileAttachments[0]->hasThumbnail()) {
+                    $imageURL = $fileAttachments[0]->getWebPath();
+                }
             }
+        } catch (Exception $e) {
+            $imageURL = "";
         }
 
         // Create menu element with page data
