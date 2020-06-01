@@ -76,9 +76,12 @@ foreach ($exhibits as $index => $exhibit) {
             $imageURL = "";
             $pageAttachments = $exhibitPage->getAllAttachments();
             if (count($pageAttachments) > 0) {
-                $fileAttachments = $pageAttachments[0]->getItem()->getFiles();
-                if (count($fileAttachments) > 0 && $fileAttachments[0]->hasThumbnail()) {
-                    $imageURL = $fileAttachments[0]->getWebPath();
+                $item = $pageAttachments[0]->getItem();
+                if ($item) {
+                    $fileAttachments = $item->getFiles();
+                    if (count($fileAttachments) > 0 && $fileAttachments[0]->hasThumbnail()) {
+                        $imageURL = $fileAttachments[0]->getWebPath();
+                    }
                 }
             }
         } catch (Exception $e) {
