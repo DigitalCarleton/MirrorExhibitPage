@@ -71,7 +71,7 @@ foreach ($exhibits as $index => $exhibit) {
         // Get page data for menu
         $pageTitle = $exhibitPage->title;
         $pageID = $exhibitPage->id;
-        $imageURL = ""
+        $imageURL = "";
         
         // try {
         //     $imageURL = "";
