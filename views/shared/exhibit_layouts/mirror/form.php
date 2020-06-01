@@ -62,20 +62,20 @@ foreach ($exhibits as $index => $exhibit) {
             $imageURL = "";
             
             // THIS SECTION FINDS BACKGROUND IMAGES FOR ALL MENU ELEMENTS -- VERY SLOW
-            // try {
-            //     $pageAttachments = $page->getAllAttachments();
-            //     if (count($pageAttachments) > 0) {
-            //         $item = $pageAttachments[0]->getItem();
-            //         if ($item) {
-            //             $fileAttachments = $item->getFiles();
-            //             if (count($fileAttachments) > 0 && $fileAttachments[0]->hasThumbnail()) {
-            //                 $imageURL = $fileAttachments[0]->getWebPath();
-            //             }
-            //         }
-            //     }
-            // } catch (Exception $e) {
-            //     $imageURL = "";
-            // }
+            try {
+                $pageAttachments = $page->getAllAttachments();
+                if (count($pageAttachments) > 0) {
+                    $item = $pageAttachments[0]->getItem();
+                    if ($item) {
+                        $fileAttachments = $item->getFiles();
+                        if (count($fileAttachments) > 0 && $fileAttachments[0]->hasThumbnail()) {
+                            $imageURL = $fileAttachments[0]->getWebPath();
+                        }
+                    }
+                }
+            } catch (Exception $e) {
+                $imageURL = "";
+            }
 
 
             // Create menu element with page data
