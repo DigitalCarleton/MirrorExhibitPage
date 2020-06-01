@@ -112,9 +112,13 @@ echo "</div>
     $blocksTable = $db->getTable('ExhibitPageBlock');
     $page = $block->getPage(0);
     $currentPageID = (int)$page['id'];
-    if (count($blocksTable->fetchObjects("SELECT text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}")) > 0) {
-        $blocksData = $blocksTable->fetchObjects("SELECT text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}");
-        $mirroredPageID = (int)$blocksData[0]['text'];
+    if (count($blocksTable->fetchObjects("SELECT layout, text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}")) > 0) {
+        $blocksData = $blocksTable->fetchObjects("SELECT layout, text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}");
+        foreach ($blocksData as $index => $block) {
+            if ($block['layout'] == 'mirror') {
+                $mirroredPageID = (int)$block['text'];
+            }
+        }
     } else {
         $mirroredPageID = "";
     }
