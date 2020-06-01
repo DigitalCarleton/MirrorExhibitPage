@@ -77,7 +77,6 @@ foreach ($exhibits as $index => $exhibit) {
                 $imageURL = "";
             }
 
-
             // Create menu element with page data
             echo "
             <div class='attachment' data-attachment-index='{$index}' onclick=\"document.getElementsByName('{$formStem}[text]')[0].value = {$pageID};\">
@@ -92,7 +91,7 @@ foreach ($exhibits as $index => $exhibit) {
     echo "</div>";
 }
 
-// Styles for page selection menu
+// Styles for page selection submenu
 echo "</div>
 <style>
 #exhibit-page-display {
