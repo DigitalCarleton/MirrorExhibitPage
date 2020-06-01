@@ -13,7 +13,7 @@ $exhibitsTable = $db->getTable("Exhibit");
 $exhibits = $exhibitsTable->fetchObjects("SELECT * FROM omeka_exhibits");
 
 echo "
-<input id='exhibit-selector' type='text' list='testlist' style='width:20vw;' onclick='select();' oninput='submenuSelector();'>
+<input id='exhibit-selector' type='text' list='testlist' style='width:20vw;' onclick='select();' oninput='submenuSelector();' autocomplete='off'>
 <datalist id='testlist'>
 ";
 foreach ($exhibits as $index => $exhibit) {
@@ -126,5 +126,6 @@ echo "</div>
     <?php 
         $idStem = str_replace('[', '-', str_replace(']', '-', $formStem));
         echo $this->formText($formStem . '[text]', $mirroredPageID);
+        echo "<i style='opacity: 0.6; margin-left: 1em;'>You can also find the page ID at the end of any edit-page URL, and enter it directly.</i>";
     ?>
 </div>
