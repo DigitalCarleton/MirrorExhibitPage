@@ -17,7 +17,7 @@ echo "
 <datalist id='testlist'>
 ";
 foreach ($exhibits as $index => $exhibit) {
-    $title = htmlspecialchars($exhibit['title'], ENT_QUOTES | ENT_HTML5);
+    $title = htmlspecialchars($exhibit['title'], ENT_QUOTES);
     $slug = $exhibit['slug'];
     echo "<option id='{$slug}' value='{$title}'>";
 }
