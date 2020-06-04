@@ -13,20 +13,24 @@ $exhibitsTable = $db->getTable("Exhibit");
 $exhibits = $exhibitsTable->fetchObjects("SELECT * FROM omeka_exhibits");
 
 echo "
-<input id='exhibit-selector' type='text' list='testlist' style='width:20vw;' onclick='select();' oninput='submenuSelector();' autocomplete='off'>
+<input id='exhibit-selector' type='text' list='testlist' style='width:20vw;' onclick='select();' autocomplete='off'>
 <datalist id='testlist'>
 ";
 foreach ($exhibits as $index => $exhibit) {
+    $title = $exhibit['title'];
     $slug = $exhibit['slug'];
-    echo "<option value='{$slug}'>";
+    echo "<option id='{$slug}' value='{$title}'>";
 }
 echo "</datalist>";
 ?>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
-function submenuSelector() {
-    var slug = document.getElementById('exhibit-selector').value;
+$(function() {
+  $('#exhibit-selector').on('input',function() {
+    var opt = $('option[value="'+$(this).val()+'"]');
+    var slug = opt.attr('id');
     var submenus = document.getElementsByClassName('pages-sub-menu');
     for (div of submenus) {
         if (div.id == slug) {
@@ -35,7 +39,8 @@ function submenuSelector() {
             div.hidden = true;
         }
     }
-}
+  });
+});
 </script>
 
 
