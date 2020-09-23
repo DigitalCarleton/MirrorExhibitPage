@@ -10,7 +10,7 @@ $db = get_db();
 
 <?php
 $exhibitsTable = $db->getTable("Exhibit");
-$exhibits = $exhibitsTable->fetchObjects("SELECT * FROM omeka_exhibits");
+$exhibits = $exhibitsTable->fetchObjects("SELECT * FROM `{$db->prefix}exhibits` ");
 
 echo "
 <input id='exhibit-selector' type='text' list='testlist' style='width:20vw;' onclick='select();' autocomplete='off'>
@@ -52,7 +52,7 @@ $(function() {
 
 <?php
 $pagesTable = $db->getTable("ExhibitPage");
-$allPages = $pagesTable->fetchObjects("SELECT * FROM omeka_exhibit_pages");
+$allPages = $pagesTable->fetchObjects("SELECT * FROM `{$db->prefix}exhibit_pages` ");
 
 foreach ($exhibits as $index => $exhibit) {
     $slug = $exhibit['slug'];
@@ -117,8 +117,8 @@ echo "</div>
     $blocksTable = $db->getTable('ExhibitPageBlock');
     $page = $block->getPage(0);
     $currentPageID = (int)$page['id'];
-    if (count($blocksTable->fetchObjects("SELECT layout, text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}")) > 0) {
-        $blocksData = $blocksTable->fetchObjects("SELECT layout, text FROM omeka_exhibit_page_blocks WHERE page_id = {$currentPageID}");
+    if (count($blocksTable->fetchObjects("SELECT layout, text FROM `{$db->prefix}exhibit_page_blocks` WHERE page_id = {$currentPageID}")) > 0) {
+        $blocksData = $blocksTable->fetchObjects("SELECT layout, text FROM `{$db->prefix}exhibit_page_blocks` WHERE page_id = {$currentPageID}");
         foreach ($blocksData as $index => $block) {
             if ($block['layout'] == 'mirror') {
                 $mirroredPageID = (int)$block['text'];
